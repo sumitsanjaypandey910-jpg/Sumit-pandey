@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, Lock, Star, Grid } from 'lucide-react';
 import { WORLDS_DATA } from '../data/levels';
 import { GameProgress, Level, LevelStats } from '../types';
+import { soundManager } from '../utils/audio';
 
 interface LevelSelectModalProps {
   isOpen: boolean;
@@ -55,8 +56,11 @@ export const LevelSelectModal: React.FC<LevelSelectModalProps> = ({
             </div>
             <button
               id="btn-close-level-select"
-              onClick={onClose}
-              className="p-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all"
+              onClick={() => {
+                soundManager.playModalClose();
+                onClose();
+              }}
+              className="p-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
             >
               <X className="w-4 h-4" />
             </button>
@@ -71,8 +75,11 @@ export const LevelSelectModal: React.FC<LevelSelectModalProps> = ({
               <button
                 key={world.id}
                 id={`world-tab-${world.id}`}
-                onClick={() => setActiveWorldId(world.id)}
-                className={`px-3.5 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 ${
+                onClick={() => {
+                  soundManager.playClick();
+                  setActiveWorldId(world.id);
+                }}
+                className={`px-3.5 py-2 rounded-2xl text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all flex items-center gap-1.5 cursor-pointer ${
                   isSelected
                     ? 'bg-cyan-400 text-slate-950 shadow-[0_0_15px_rgba(34,211,238,0.4)]'
                     : 'bg-white/5 border border-white/10 text-slate-400 hover:text-slate-200 hover:bg-white/10'
@@ -116,8 +123,11 @@ export const LevelSelectModal: React.FC<LevelSelectModalProps> = ({
                 id={`level-card-${lvl.id}`}
                 onClick={() => {
                   if (isUnlocked) {
+                    soundManager.playClick();
                     onSelectLevel(lvl);
                     onClose();
+                  } else {
+                    soundManager.playInvalidMove();
                   }
                 }}
                 disabled={!isUnlocked}
@@ -127,7 +137,7 @@ export const LevelSelectModal: React.FC<LevelSelectModalProps> = ({
                     : isCompleted
                     ? 'bg-white/5 border-white/15 text-white hover:border-cyan-500/50 hover:bg-cyan-500/10'
                     : isUnlocked
-                    ? 'bg-white/[0.03] border-white/10 text-slate-300 hover:border-white/25 hover:bg-white/5'
+                    ? 'bg-white/[0.03] border-white/10 text-slate-300 hover:border-white/25 hover:bg-white/5 cursor-pointer'
                     : 'bg-white/[0.01] border-white/5 text-slate-700 cursor-not-allowed'
                 }`}
               >

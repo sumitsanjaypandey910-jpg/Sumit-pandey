@@ -114,7 +114,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
   // Find closest dot to pointer coordinates within magnetic radius
   const getNearbyDot = useCallback(
-    (px: number, py: number, radius = 40): Dot | null => {
+    (px: number, py: number, radius = 48): Dot | null => {
       for (const dot of level.dots) {
         const dotPos = getDotPos(dot);
         const dist = Math.hypot(dotPos.x - px, dotPos.y - py);
@@ -151,7 +151,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
     setDragPos({ x: px, y: py });
 
-    const dot = getNearbyDot(px, py, 36);
+    const dot = getNearbyDot(px, py, 44);
     if (dot && dot.id !== currentDotId) {
       tryMove(dot.id);
     }

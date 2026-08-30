@@ -1,6 +1,7 @@
 import React from 'react';
 import { X, Calendar, Flame, Gift, Star, Play } from 'lucide-react';
 import { Level } from '../types';
+import { soundManager } from '../utils/audio';
 
 interface DailyChallengeModalProps {
   isOpen: boolean;
@@ -40,8 +41,11 @@ export const DailyChallengeModal: React.FC<DailyChallengeModalProps> = ({
         {/* Close */}
         <button
           id="btn-close-daily"
-          onClick={onClose}
-          className="absolute top-4 right-4 p-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all"
+          onClick={() => {
+            soundManager.playModalClose();
+            onClose();
+          }}
+          className="absolute top-4 right-4 p-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all cursor-pointer"
         >
           <X className="w-4 h-4" />
         </button>
@@ -90,10 +94,11 @@ export const DailyChallengeModal: React.FC<DailyChallengeModalProps> = ({
         <button
           id="btn-start-daily"
           onClick={() => {
+            soundManager.playClick();
             onPlayDaily(dailyLevel);
             onClose();
           }}
-          className="w-full py-3.5 px-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,211,238,0.45)] active:scale-[0.98] transition-all"
+          className="w-full py-3.5 px-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,211,238,0.45)] active:scale-[0.98] transition-all cursor-pointer"
         >
           <Play className="w-4 h-4 fill-slate-950" />
           <span>{isDailyCompletedToday ? 'REPLAY TODAY\'S PUZZLE' : 'START DAILY PUZZLE'}</span>

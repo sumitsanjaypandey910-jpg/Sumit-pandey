@@ -23,7 +23,7 @@ const STORAGE_KEY = 'one_line_touch_game_progress_v1';
 const defaultProgress: GameProgress = {
   completedLevels: {},
   currentLevelId: 101,
-  hintsAvailable: 5,
+  hintsAvailable: 10,
   settings: {
     soundEnabled: true,
     hapticsEnabled: true,
@@ -165,8 +165,9 @@ export default function App() {
       setStrokeHistory(newHistory);
       setCurrentDotId(toId);
 
-      // Play audio chime for this step in stroke
-      soundManager.playDotConnect(newHistory.length);
+      // Play audio chime for this step in stroke with total steps progression
+      const totalSteps = activeLines.reduce((acc, l) => acc + l.totalPasses, 0);
+      soundManager.playDotConnect(newHistory.length, totalSteps);
 
       // Check win condition (all lines have 0 passes remaining)
       if (updatedRemainingTotal === 0) {
@@ -174,13 +175,13 @@ export default function App() {
         setIsTimerRunning(false);
         soundManager.playLevelComplete();
 
-        // Calculate stars
-        const parTime = currentLevel.parTime || 20;
+        // Calculate stars (forgiving threshold)
+        const parTime = currentLevel.parTime || 25;
         let earnedStars = 3;
-        if (hintsUsedCount > 0 || timeSeconds > parTime * 1.5) {
+        if (hintsUsedCount > 1 || timeSeconds > parTime * 2.0) {
           earnedStars = 2;
         }
-        if (hintsUsedCount >= 2 || timeSeconds > parTime * 2.5) {
+        if (hintsUsedCount > 3 || timeSeconds > parTime * 3.5) {
           earnedStars = 1;
         }
 
@@ -203,8 +204,8 @@ export default function App() {
                 completedAt: new Date().toISOString()
               }
             },
-            // Reward hint tokens
-            hintsAvailable: prev.hintsAvailable + (isDaily ? 3 : isNewCompletion ? 1 : 0),
+            // Reward hint tokens generously
+            hintsAvailable: prev.hintsAvailable + (isDaily ? 5 : isNewCompletion ? 2 : 1),
             streak: isDaily && !isDailyCompletedToday ? prev.streak + 1 : prev.streak,
             lastDailyDate: isDaily ? todayStr : prev.lastDailyDate
           };
@@ -276,7 +277,7 @@ export default function App() {
 
     if (progress.hintsAvailable <= 0) {
       // Free recharge if out of hints
-      setProgress((prev) => ({ ...prev, hintsAvailable: prev.hintsAvailable + 2 }));
+      setProgress((prev) => ({ ...prev, hintsAvailable: prev.hintsAvailable + 4 }));
     } else {
       setProgress((prev) => ({ ...prev, hintsAvailable: Math.max(0, prev.hintsAvailable - 1) }));
     }
@@ -406,10 +407,22 @@ export default function App() {
         totalLinesCount={totalLinesCount}
         soundEnabled={progress.settings.soundEnabled}
         onToggleSound={handleToggleSound}
-        onOpenLevelSelect={() => setIsLevelSelectOpen(true)}
-        onOpenHowToPlay={() => setIsHowToPlayOpen(true)}
-        onOpenDaily={() => setIsDailyOpen(true)}
-        onOpenEditor={() => setIsEditorOpen(true)}
+        onOpenLevelSelect={() => {
+          soundManager.playModalOpen();
+          setIsLevelSelectOpen(true);
+        }}
+        onOpenHowToPlay={() => {
+          soundManager.playModalOpen();
+          setIsHowToPlayOpen(true);
+        }}
+        onOpenDaily={() => {
+          soundManager.playModalOpen();
+          setIsDailyOpen(true);
+        }}
+        onOpenEditor={() => {
+          soundManager.playModalOpen();
+          setIsEditorOpen(true);
+        }}
         streak={progress.streak}
         totalStars={totalStars}
       />

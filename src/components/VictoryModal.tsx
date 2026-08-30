@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { Star, RotateCcw, ArrowRight, Grid, Trophy, Sparkles } from 'lucide-react';
 import { Level } from '../types';
+import { soundManager } from '../utils/audio';
 
 interface VictoryModalProps {
   isOpen: boolean;
@@ -24,6 +25,13 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 }) => {
   useEffect(() => {
     if (isOpen) {
+      // Play sequential star chimes
+      for (let i = 0; i < stars; i++) {
+        setTimeout(() => {
+          soundManager.playStarEarn(i);
+        }, 300 + i * 220);
+      }
+
       // Fire vibrant confetti celebration
       confetti({
         particleCount: 80,
@@ -51,7 +59,7 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
 
       return () => clearTimeout(timeout);
     }
-  }, [isOpen]);
+  }, [isOpen, stars]);
 
   if (!isOpen) return null;
 
@@ -121,8 +129,11 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
           {/* Next Level Primary Button */}
           <button
             id="btn-victory-next"
-            onClick={onNextLevel}
-            className="w-full py-3.5 px-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,211,238,0.45)] active:scale-[0.98] transition-all"
+            onClick={() => {
+              soundManager.playClick();
+              onNextLevel();
+            }}
+            className="w-full py-3.5 px-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 shadow-[0_0_25px_rgba(34,211,238,0.45)] active:scale-[0.98] transition-all cursor-pointer"
           >
             <span>NEXT STAGE</span>
             <ArrowRight className="w-4 h-4" />
@@ -132,20 +143,25 @@ export const VictoryModal: React.FC<VictoryModalProps> = ({
           <div className="flex items-center gap-2">
             <button
               id="btn-victory-replay"
-              onClick={onReplay}
-              className="flex-1 py-2.5 px-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all"
+              onClick={() => {
+                soundManager.playClick();
+                onReplay();
+              }}
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all cursor-pointer"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>Replay</span>
             </button>
-
             <button
               id="btn-victory-levels"
-              onClick={onLevelSelect}
-              className="flex-1 py-2.5 px-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all"
+              onClick={() => {
+                soundManager.playClick();
+                onLevelSelect();
+              }}
+              className="flex-1 py-2.5 px-3 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 text-slate-300 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 active:scale-[0.98] transition-all cursor-pointer"
             >
               <Grid className="w-3.5 h-3.5" />
-              <span>Stages</span>
+              <span>Levels</span>
             </button>
           </div>
         </div>
