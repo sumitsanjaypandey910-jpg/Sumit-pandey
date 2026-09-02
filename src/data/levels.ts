@@ -12,137 +12,206 @@ export const WORLDS_DATA: World[] = [
     color: 'from-emerald-500 to-green-600',
     accentColor: '#10b981',
     levels: [
-      // 1. Spring Blossom (4-petal floral rosette)
+      // 1. First Step (Classic Triangle - 3 dots, intuitive starter)
       {
         id: 101,
         worldId: 1,
         levelNumber: 1,
-        title: 'Spring Blossom',
+        title: 'First Step',
         difficulty: 'Beginner',
-        parTime: 20,
+        parTime: 12,
         dots: [
-          { id: 1, x: 50, y: 50 },
-          { id: 2, x: 50, y: 15 },
-          { id: 3, x: 85, y: 50 },
-          { id: 4, x: 50, y: 85 },
-          { id: 5, x: 15, y: 50 }
+          { id: 1, x: 50, y: 22 },
+          { id: 2, x: 80, y: 78 },
+          { id: 3, x: 20, y: 78 }
         ],
         lines: [
           { from: 1, to: 2 },
           { from: 2, to: 3 },
-          { from: 3, to: 1 },
-          { from: 1, to: 4 },
-          { from: 4, to: 5 },
-          { from: 5, to: 1 },
-          { from: 1, to: 3 },
-          { from: 1, to: 5 }
+          { from: 3, to: 1 }
         ]
       },
-      // 2. Garden Tulip (Stem, Leaf, and 3-pointed Petal Cup)
+      // 2. Diamond Gem (4 dots with central spine)
       {
         id: 102,
         worldId: 1,
         levelNumber: 2,
-        title: 'Garden Tulip',
+        title: 'Diamond Gem',
         difficulty: 'Beginner',
-        parTime: 22,
+        parTime: 15,
         dots: [
-          { id: 1, x: 25, y: 20 },
-          { id: 2, x: 50, y: 35 },
-          { id: 3, x: 75, y: 20 },
-          { id: 4, x: 50, y: 55 },
-          { id: 5, x: 50, y: 88 },
-          { id: 6, x: 25, y: 70 }
+          { id: 1, x: 50, y: 16 },
+          { id: 2, x: 82, y: 50 },
+          { id: 3, x: 50, y: 84 },
+          { id: 4, x: 18, y: 50 }
         ],
         lines: [
           { from: 1, to: 2 },
           { from: 2, to: 3 },
           { from: 3, to: 4 },
           { from: 4, to: 1 },
-          { from: 2, to: 4 },
-          { from: 4, to: 5 },
-          { from: 5, to: 6 },
-          { from: 6, to: 4 }
+          { from: 1, to: 3 }
         ]
       },
-      // 3. Lotus Bloom (Symmetric Water Lily)
+      // 3. Sailboat Flag (4 dots triangle flag on mast)
       {
         id: 103,
         worldId: 1,
         levelNumber: 3,
-        title: 'Lotus Bloom',
+        title: 'Sailboat Flag',
         difficulty: 'Beginner',
-        parTime: 25,
+        parTime: 15,
         dots: [
-          { id: 1, x: 50, y: 15 },
-          { id: 2, x: 25, y: 35 },
-          { id: 3, x: 75, y: 35 },
-          { id: 4, x: 20, y: 65 },
-          { id: 5, x: 80, y: 65 },
-          { id: 6, x: 50, y: 85 }
+          { id: 1, x: 35, y: 18 },
+          { id: 2, x: 75, y: 45 },
+          { id: 3, x: 35, y: 45 },
+          { id: 4, x: 35, y: 82 }
         ],
         lines: [
           { from: 1, to: 2 },
-          { from: 2, to: 4 },
-          { from: 4, to: 6 },
-          { from: 6, to: 5 },
-          { from: 5, to: 3 },
-          { from: 3, to: 1 },
           { from: 2, to: 3 },
+          { from: 3, to: 1 },
+          { from: 3, to: 4 }
+        ]
+      },
+      // 4. Star Light (Classic 5-pointed Star)
+      {
+        id: 104,
+        worldId: 1,
+        levelNumber: 4,
+        title: 'Star Light',
+        difficulty: 'Beginner',
+        parTime: 18,
+        dots: [
+          { id: 1, x: 50, y: 15 },
+          { id: 2, x: 83, y: 39 },
+          { id: 3, x: 70, y: 82 },
+          { id: 4, x: 30, y: 82 },
+          { id: 5, x: 17, y: 39 }
+        ],
+        lines: [
+          { from: 1, to: 3 },
+          { from: 3, to: 5 },
+          { from: 5, to: 2 },
+          { from: 2, to: 4 },
+          { from: 4, to: 1 }
+        ]
+      },
+      // 5. Hourglass (5 dots symmetric bowtie)
+      {
+        id: 105,
+        worldId: 1,
+        levelNumber: 5,
+        title: 'Hourglass',
+        difficulty: 'Beginner',
+        parTime: 18,
+        dots: [
+          { id: 1, x: 25, y: 20 },
+          { id: 2, x: 75, y: 20 },
+          { id: 3, x: 50, y: 50 },
+          { id: 4, x: 25, y: 80 },
+          { id: 5, x: 75, y: 80 }
+        ],
+        lines: [
+          { from: 1, to: 2 },
+          { from: 1, to: 3 },
+          { from: 2, to: 3 },
+          { from: 3, to: 4 },
+          { from: 3, to: 5 },
+          { from: 4, to: 5 }
+        ]
+      },
+      // 6. Cozy Cabin (Classic House / Envelope - 5 dots, 8 lines)
+      {
+        id: 106,
+        worldId: 1,
+        levelNumber: 6,
+        title: 'Cozy Cabin',
+        difficulty: 'Beginner',
+        parTime: 20,
+        dots: [
+          { id: 1, x: 50, y: 18 },
+          { id: 2, x: 24, y: 46 },
+          { id: 3, x: 76, y: 46 },
+          { id: 4, x: 24, y: 82 },
+          { id: 5, x: 76, y: 82 }
+        ],
+        lines: [
+          { from: 1, to: 2 },
+          { from: 1, to: 3 },
+          { from: 2, to: 3 },
+          { from: 2, to: 4 },
+          { from: 3, to: 5 },
           { from: 4, to: 5 },
           { from: 2, to: 5 },
           { from: 3, to: 4 }
         ]
       },
-      // 4. Monarch Butterfly (Symmetric Wing Lattice)
+      // 7. Little Fish (5 dots swimming fish)
       {
-        id: 104,
+        id: 107,
         worldId: 1,
-        levelNumber: 4,
-        title: 'Monarch Butterfly',
-        difficulty: 'Intermediate',
-        parTime: 28,
+        levelNumber: 7,
+        title: 'Little Fish',
+        difficulty: 'Beginner',
+        parTime: 20,
         dots: [
-          { id: 1, x: 50, y: 18 },
-          { id: 2, x: 18, y: 30 },
-          { id: 3, x: 82, y: 30 },
-          { id: 4, x: 50, y: 50 },
-          { id: 5, x: 22, y: 75 },
-          { id: 6, x: 78, y: 75 },
-          { id: 7, x: 50, y: 85 }
+          { id: 1, x: 20, y: 50 },
+          { id: 2, x: 50, y: 25 },
+          { id: 3, x: 50, y: 75 },
+          { id: 4, x: 80, y: 25 },
+          { id: 5, x: 80, y: 75 }
         ],
         lines: [
           { from: 1, to: 2 },
           { from: 1, to: 3 },
-          { from: 1, to: 4 },
           { from: 2, to: 3 },
-          { from: 2, to: 4 },
           { from: 2, to: 5 },
           { from: 3, to: 4 },
-          { from: 3, to: 6 },
-          { from: 4, to: 5 },
-          { from: 4, to: 6 },
-          { from: 5, to: 6 },
-          { from: 5, to: 7 },
-          { from: 6, to: 7 }
+          { from: 4, to: 5 }
         ]
       },
-      // 5. Golden Sunflower (Central Seed Core with Radial Rays)
+      // 8. Pine Tree (6 dots botanical evergreen)
       {
-        id: 105,
+        id: 108,
         worldId: 1,
-        levelNumber: 5,
-        title: 'Golden Sunflower',
-        difficulty: 'Intermediate',
-        parTime: 30,
+        levelNumber: 8,
+        title: 'Pine Tree',
+        difficulty: 'Beginner',
+        parTime: 22,
         dots: [
-          { id: 1, x: 50, y: 12 },
-          { id: 2, x: 85, y: 32 },
-          { id: 3, x: 85, y: 68 },
-          { id: 4, x: 50, y: 88 },
-          { id: 5, x: 15, y: 68 },
-          { id: 6, x: 15, y: 32 },
-          { id: 7, x: 50, y: 50 }
+          { id: 1, x: 50, y: 15 },
+          { id: 2, x: 25, y: 45 },
+          { id: 3, x: 75, y: 45 },
+          { id: 4, x: 18, y: 75 },
+          { id: 5, x: 82, y: 75 },
+          { id: 6, x: 50, y: 75 }
+        ],
+        lines: [
+          { from: 1, to: 2 },
+          { from: 1, to: 3 },
+          { from: 2, to: 3 },
+          { from: 2, to: 4 },
+          { from: 3, to: 5 },
+          { from: 4, to: 6 },
+          { from: 5, to: 6 }
+        ]
+      },
+      // 9. Hexagon Sprout (6 dots perimeter + central vector)
+      {
+        id: 109,
+        worldId: 1,
+        levelNumber: 9,
+        title: 'Hexagon Sprout',
+        difficulty: 'Beginner',
+        parTime: 22,
+        dots: [
+          { id: 1, x: 50, y: 16 },
+          { id: 2, x: 82, y: 35 },
+          { id: 3, x: 82, y: 68 },
+          { id: 4, x: 50, y: 87 },
+          { id: 5, x: 18, y: 68 },
+          { id: 6, x: 18, y: 35 }
         ],
         lines: [
           { from: 1, to: 2 },
@@ -151,109 +220,32 @@ export const WORLDS_DATA: World[] = [
           { from: 4, to: 5 },
           { from: 5, to: 6 },
           { from: 6, to: 1 },
-          { from: 1, to: 7 },
-          { from: 4, to: 7 }
+          { from: 1, to: 4 }
         ]
       },
-      // 6. Autumn Maple (Branching Veins and Leaf Lobes)
+      // 10. Royal Crown (5 dots majestic crown)
       {
-        id: 106,
+        id: 110,
         worldId: 1,
-        levelNumber: 6,
-        title: 'Autumn Maple',
-        difficulty: 'Intermediate',
-        parTime: 32,
+        levelNumber: 10,
+        title: 'Royal Crown',
+        difficulty: 'Beginner',
+        parTime: 24,
         dots: [
-          { id: 1, x: 50, y: 12 },
-          { id: 2, x: 25, y: 32 },
-          { id: 3, x: 75, y: 32 },
-          { id: 4, x: 50, y: 52 },
-          { id: 5, x: 20, y: 72 },
-          { id: 6, x: 80, y: 72 },
-          { id: 7, x: 50, y: 92 }
+          { id: 1, x: 20, y: 32 },
+          { id: 2, x: 50, y: 18 },
+          { id: 3, x: 80, y: 32 },
+          { id: 4, x: 22, y: 75 },
+          { id: 5, x: 78, y: 75 }
         ],
         lines: [
-          { from: 1, to: 2 },
-          { from: 1, to: 3 },
-          { from: 2, to: 4 },
-          { from: 3, to: 4 },
-          { from: 2, to: 5 },
-          { from: 3, to: 6 },
-          { from: 5, to: 4 },
-          { from: 6, to: 4 },
-          { from: 5, to: 7 },
-          { from: 6, to: 7 },
-          { from: 4, to: 7 },
-          { from: 2, to: 3 },
-          { from: 5, to: 6 }
-        ]
-      },
-      // 7. Wild Orchid (Exotic Botanical Flower with Wing Petals)
-      {
-        id: 107,
-        worldId: 1,
-        levelNumber: 7,
-        title: 'Wild Orchid',
-        difficulty: 'Advanced',
-        parTime: 35,
-        dots: [
-          { id: 1, x: 50, y: 45 },
-          { id: 2, x: 50, y: 15 },
-          { id: 3, x: 18, y: 35 },
-          { id: 4, x: 82, y: 35 },
-          { id: 5, x: 25, y: 70 },
-          { id: 6, x: 75, y: 70 },
-          { id: 7, x: 50, y: 88 }
-        ],
-        lines: [
-          { from: 1, to: 2 },
-          { from: 1, to: 3 },
-          { from: 1, to: 4 },
-          { from: 1, to: 5 },
-          { from: 1, to: 6 },
-          { from: 1, to: 7 },
-          { from: 2, to: 3 },
-          { from: 2, to: 4 },
-          { from: 3, to: 4 },
-          { from: 3, to: 5 },
-          { from: 4, to: 6 },
-          { from: 5, to: 6 },
-          { from: 5, to: 7 },
-          { from: 6, to: 7 }
-        ]
-      },
-      // 8. Mystic Rose (Multi-Layered Rosette Petal Matrix)
-      {
-        id: 108,
-        worldId: 1,
-        levelNumber: 8,
-        title: 'Mystic Rose',
-        difficulty: 'Master',
-        parTime: 38,
-        dots: [
-          { id: 1, x: 50, y: 50 },
-          { id: 2, x: 50, y: 15 },
-          { id: 3, x: 80, y: 30 },
-          { id: 4, x: 80, y: 70 },
-          { id: 5, x: 50, y: 85 },
-          { id: 6, x: 20, y: 70 },
-          { id: 7, x: 20, y: 30 }
-        ],
-        lines: [
-          { from: 2, to: 3 },
-          { from: 3, to: 4 },
           { from: 4, to: 5 },
-          { from: 5, to: 6 },
-          { from: 6, to: 7 },
-          { from: 7, to: 2 },
-          { from: 1, to: 2 },
-          { from: 1, to: 3 },
           { from: 1, to: 4 },
-          { from: 1, to: 5 },
-          { from: 1, to: 6 },
-          { from: 1, to: 7 },
-          { from: 7, to: 3 },
-          { from: 6, to: 4 }
+          { from: 3, to: 5 },
+          { from: 1, to: 2 },
+          { from: 2, to: 3 },
+          { from: 2, to: 4 },
+          { from: 2, to: 5 }
         ]
       }
     ]
