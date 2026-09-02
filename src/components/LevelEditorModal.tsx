@@ -119,17 +119,17 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
   return (
     <div
       id="level-editor-modal"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/85 backdrop-blur-xl animate-in fade-in select-none"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl animate-in fade-in select-none"
     >
-      <div className="relative w-full max-w-md max-h-[90vh] rounded-3xl bg-slate-950/95 border border-white/10 p-5 shadow-2xl flex flex-col overflow-hidden">
+      <div className="relative w-full max-w-md max-h-[90vh] rounded-3xl bg-[#041d12]/95 border border-emerald-500/30 p-5 shadow-[0_0_50px_rgba(16,185,129,0.3)] flex flex-col overflow-hidden">
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center">
-              <Layers className="w-5 h-5 text-cyan-400" />
+            <div className="w-10 h-10 rounded-2xl bg-white/10 border border-white/20 flex items-center justify-center shadow-inner">
+              <Layers className="w-5 h-5 text-emerald-400" />
             </div>
             <div>
-              <span className="text-[10px] font-bold tracking-widest text-cyan-400 uppercase block">Node Architect</span>
+              <span className="text-[10px] font-bold tracking-widest text-emerald-300 uppercase block">Node Architect</span>
               <h2 className="text-base font-black italic tracking-tight text-white uppercase">LEVEL STUDIO</h2>
             </div>
           </div>
@@ -137,7 +137,7 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
           <button
             id="btn-close-editor"
             onClick={onClose}
-            className="p-1.5 rounded-full bg-white/5 border border-white/10 text-slate-400 hover:text-white hover:bg-white/10 active:scale-95 transition-all"
+            className="p-1.5 rounded-full bg-white/10 border border-white/20 text-white/70 hover:text-white hover:bg-white/20 active:scale-95 transition-all cursor-pointer"
           >
             <X className="w-4 h-4" />
           </button>
@@ -151,38 +151,38 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Puzzle Name..."
-            className="w-full px-3.5 py-2 rounded-2xl bg-white/5 border border-white/10 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyan-400 font-medium"
+            className="w-full px-3.5 py-2 rounded-2xl bg-white/10 border border-white/20 text-xs text-white placeholder-emerald-200/40 focus:outline-none focus:border-emerald-400 font-medium"
           />
 
           <div className="flex items-center justify-between gap-2 px-1">
-            <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Line Tool:</span>
+            <span className="text-[10px] text-emerald-200/70 font-bold uppercase tracking-wider">Line Tool:</span>
             <div className="flex items-center gap-1.5">
               <button
                 onClick={() => setActiveLineType('normal')}
-                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                   activeLineType === 'normal'
-                    ? 'bg-cyan-400 text-slate-950 border-cyan-400 shadow-[0_0_12px_rgba(34,211,238,0.4)]'
-                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-slate-200'
+                    ? 'bg-emerald-400 text-slate-950 border-emerald-400 shadow-[0_0_12px_rgba(52,211,153,0.5)] font-black'
+                    : 'bg-white/10 border-white/20 text-white/70 hover:text-white hover:bg-white/20'
                 }`}
               >
                 Normal
               </button>
               <button
                 onClick={() => setActiveLineType('one-way')}
-                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                   activeLineType === 'one-way'
-                    ? 'bg-amber-400 text-slate-950 border-amber-400 shadow-[0_0_12px_rgba(245,158,11,0.4)]'
-                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-slate-200'
+                    ? 'bg-emerald-300 text-slate-950 border-emerald-300 shadow-[0_0_12px_rgba(110,231,183,0.6)] font-black'
+                    : 'bg-white/10 border-white/20 text-white/70 hover:text-white hover:bg-white/20'
                 }`}
               >
                 One-Way ➔
               </button>
               <button
                 onClick={() => setActiveLineType('double')}
-                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all ${
+                className={`px-3 py-1.5 rounded-xl text-[10px] font-bold uppercase tracking-wider border transition-all cursor-pointer ${
                   activeLineType === 'double'
-                    ? 'bg-purple-400 text-slate-950 border-purple-400 shadow-[0_0_12px_rgba(192,132,252,0.4)]'
-                    : 'bg-white/5 border-white/10 text-slate-400 hover:text-slate-200'
+                    ? 'bg-white text-slate-950 border-white shadow-[0_0_12px_rgba(255,255,255,0.6)] font-black'
+                    : 'bg-white/10 border-white/20 text-white/70 hover:text-white hover:bg-white/20'
                 }`}
               >
                 2x Double
@@ -192,9 +192,9 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
         </div>
 
         {/* Editor Interactive Canvas */}
-        <div className="relative w-full aspect-square max-w-[300px] mx-auto bg-slate-950/80 rounded-2xl border border-white/10 overflow-hidden shadow-inner my-1">
+        <div className="relative w-full aspect-square max-w-[300px] mx-auto bg-[#02130b] rounded-2xl border border-emerald-500/30 overflow-hidden shadow-inner my-1">
           {/* Subtle Grid dots */}
-          <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#22d3ee_1px,transparent_1px)] [background-size:20px_20px]" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(#10b981_1px,transparent_1px)] [background-size:20px_20px]" />
 
           <svg
             className="w-full h-full cursor-crosshair"
@@ -211,19 +211,19 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
                 return (
                   <g key={idx}>
                     <line
-                      x1={f.x - 1}
-                      y1={f.y - 1}
-                      x2={t.x - 1}
-                      y2={t.y - 1}
-                      stroke="#c084fc"
+                      x1={f.x - 1.2}
+                      y1={f.y - 1.2}
+                      x2={t.x - 1.2}
+                      y2={t.y - 1.2}
+                      stroke="#ffffff"
                       strokeWidth="1.5"
                     />
                     <line
-                      x1={f.x + 1}
-                      y1={f.y + 1}
-                      x2={t.x + 1}
-                      y2={t.y + 1}
-                      stroke="#c084fc"
+                      x1={f.x + 1.2}
+                      y1={f.y + 1.2}
+                      x2={t.x + 1.2}
+                      y2={t.y + 1.2}
+                      stroke="#34d399"
                       strokeWidth="1.5"
                     />
                   </g>
@@ -240,10 +240,10 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
                       y1={f.y}
                       x2={t.x}
                       y2={t.y}
-                      stroke="#fbbf24"
+                      stroke="#34d399"
                       strokeWidth="2"
                     />
-                    <circle cx={midX} cy={midY} r="2" fill="#fbbf24" />
+                    <circle cx={midX} cy={midY} r="2.2" fill="#ffffff" />
                   </g>
                 );
               }
@@ -255,7 +255,7 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
                   y1={f.y}
                   x2={t.x}
                   y2={t.y}
-                  stroke="#22d3ee"
+                  stroke="#10b981"
                   strokeWidth="2"
                 />
               );
@@ -268,8 +268,8 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
                 <g key={d.id} transform={`translate(${d.x}, ${d.y})`}>
                   <circle
                     r={isSelected ? 6 : 4.5}
-                    fill={isSelected ? '#22d3ee' : '#020617'}
-                    stroke={isSelected ? '#ffffff' : '#22d3ee'}
+                    fill={isSelected ? '#34d399' : '#03170e'}
+                    stroke={isSelected ? '#ffffff' : '#10b981'}
                     strokeWidth={isSelected ? 2 : 1.5}
                   />
                   <text
@@ -288,10 +288,10 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
         </div>
 
         {/* Solver status bar */}
-        <div className="mt-2 p-2.5 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-between">
+        <div className="mt-2 p-2.5 rounded-2xl bg-white/10 border border-white/15 flex items-center justify-between">
           <div className="flex items-center gap-2">
             {isSolvable ? (
-              <CheckCircle2 className="w-4 h-4 text-cyan-400" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-400" />
             ) : (
               <AlertCircle className="w-4 h-4 text-rose-400" />
             )}
@@ -300,7 +300,7 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
             </span>
           </div>
 
-          <span className="text-[10px] text-slate-400 font-mono font-bold uppercase tracking-wider">
+          <span className="text-[10px] text-emerald-200/70 font-mono font-bold uppercase tracking-wider">
             {dots.length} NODES · {lines.length} VECTORS
           </span>
         </div>
@@ -309,7 +309,7 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
         <div className="mt-3 flex items-center gap-2">
           <button
             onClick={handleClearAll}
-            className="p-3 rounded-2xl bg-white/5 border border-white/10 text-slate-400 hover:text-rose-400 hover:bg-white/10 transition-all"
+            className="p-3 rounded-2xl bg-white/10 border border-white/20 text-white/70 hover:text-rose-400 hover:bg-white/20 transition-all cursor-pointer"
             title="Clear all"
           >
             <Trash2 className="w-4 h-4" />
@@ -321,8 +321,8 @@ export const LevelEditorModal: React.FC<LevelEditorModalProps> = ({
             disabled={!isSolvable}
             className={`flex-1 py-3 px-4 rounded-2xl font-black text-xs uppercase tracking-widest flex items-center justify-center gap-2 transition-all ${
               isSolvable
-                ? 'bg-cyan-400 hover:bg-cyan-300 text-slate-950 shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-[0.98]'
-                : 'bg-white/5 border border-white/5 text-slate-700 cursor-not-allowed'
+                ? 'bg-emerald-400 hover:bg-emerald-300 text-slate-950 shadow-[0_0_20px_rgba(16,185,129,0.5)] active:scale-[0.98] cursor-pointer'
+                : 'bg-white/5 border border-white/5 text-white/20 cursor-not-allowed'
             }`}
           >
             <Play className="w-3.5 h-3.5 fill-current" />

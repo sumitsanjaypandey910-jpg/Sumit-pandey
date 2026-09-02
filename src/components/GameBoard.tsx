@@ -23,7 +23,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   onStartDotSelect,
   hintStep,
   isComplete,
-  accentColor = '#22d3ee'
+  accentColor = '#10b981'
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [boardSize, setBoardSize] = useState<{ width: number; height: number }>({ width: 440, height: 440 });
@@ -182,13 +182,13 @@ export const GameBoard: React.FC<GameBoardProps> = ({
     <div className="relative w-full max-w-xl flex items-center justify-center">
       {/* Sleek Side Flow Velocity Gauge (Hidden on very compact screens) */}
       <div className="hidden lg:flex absolute -left-12 top-1/2 -translate-y-1/2 flex-col items-center gap-3">
-        <div className="w-1.5 h-28 bg-white/5 rounded-full relative overflow-hidden border border-white/10">
+        <div className="w-1.5 h-28 bg-white/10 rounded-full relative overflow-hidden border border-white/20">
           <div
-            className="absolute bottom-0 w-full bg-cyan-400 shadow-[0_0_12px_#22d3ee] transition-all duration-300"
+            className="absolute bottom-0 w-full bg-emerald-400 shadow-[0_0_12px_#10b981] transition-all duration-300"
             style={{ height: `${flowPercent}%` }}
           />
         </div>
-        <span className="text-[9px] font-bold tracking-widest text-slate-500 uppercase rotate-90 origin-center mt-6 whitespace-nowrap">
+        <span className="text-[9px] font-bold tracking-widest text-emerald-200/60 uppercase rotate-90 origin-center mt-6 whitespace-nowrap">
           FLOW: {Math.round(flowPercent)}%
         </span>
       </div>
@@ -208,11 +208,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           id="game-board-svg"
           width={boardSize.width}
           height={boardSize.height}
-          className="w-full h-full drop-shadow-[0_0_30px_rgba(34,211,238,0.25)] overflow-visible"
+          className="w-full h-full drop-shadow-[0_0_30px_rgba(16,185,129,0.25)] overflow-visible"
         >
           <defs>
-            {/* Sleek Cyan Line Glow */}
-            <filter id="sleek-cyan-glow" x="-30%" y="-30%" width="160%" height="160%">
+            {/* Sleek Emerald Line Glow */}
+            <filter id="sleek-emerald-glow" x="-30%" y="-30%" width="160%" height="160%">
               <feGaussianBlur stdDeviation="4" result="blur" />
               <feMerge>
                 <feMergeNode in="blur" />
@@ -238,7 +238,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
               refY="3.5"
               orient="auto"
             >
-              <polygon points="0 0, 7 3.5, 0 7, 2 3.5" fill="#f59e0b" />
+              <polygon points="0 0, 7 3.5, 0 7, 2 3.5" fill="#34d399" />
             </marker>
             <marker
               id="arrowhead-sleek"
@@ -256,7 +256,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           <text
             x="50%"
             y="54%"
-            fill="rgba(255,255,255,0.03)"
+            fill="rgba(255,255,255,0.04)"
             fontSize={Math.round(boardSize.width * 0.38)}
             fontWeight="900"
             textAnchor="middle"
@@ -295,11 +295,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                     y1={p1.y + ny}
                     x2={p2.x + nx}
                     y2={p2.y + ny}
-                    stroke={traversedCount >= 1 ? accentColor : 'rgba(255,255,255,0.06)'}
+                    stroke={traversedCount >= 1 ? accentColor : 'rgba(255,255,255,0.12)'}
                     strokeWidth={traversedCount >= 1 ? 7 : 4}
                     strokeLinecap="round"
-                    filter={traversedCount >= 1 ? 'url(#sleek-cyan-glow)' : undefined}
-                    className={traversedCount >= 1 ? 'drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : ''}
+                    filter={traversedCount >= 1 ? 'url(#sleek-emerald-glow)' : undefined}
+                    className={traversedCount >= 1 ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]' : ''}
                   />
                   {/* Track 2 Skeleton / Active */}
                   <line
@@ -311,27 +311,27 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                       traversedCount >= 2
                         ? accentColor
                         : isPartiallyTraversed
-                        ? 'rgba(34,211,238,0.25)'
-                        : 'rgba(255,255,255,0.06)'
+                        ? 'rgba(52,211,153,0.35)'
+                        : 'rgba(255,255,255,0.12)'
                     }
                     strokeWidth={traversedCount >= 2 ? 7 : 4}
                     strokeLinecap="round"
-                    filter={traversedCount >= 2 ? 'url(#sleek-cyan-glow)' : undefined}
-                    className={traversedCount >= 2 ? 'drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : ''}
+                    filter={traversedCount >= 2 ? 'url(#sleek-emerald-glow)' : undefined}
+                    className={traversedCount >= 2 ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]' : ''}
                   />
                   {/* Double badge indicator if not fully traversed */}
                   {!isFullyTraversed && (
                     <g transform={`translate(${(p1.x + p2.x) / 2}, ${(p1.y + p2.y) / 2})`}>
                       <circle
                         r={9}
-                        fill="#020617"
-                        stroke="#a855f7"
+                        fill="#03170e"
+                        stroke="#34d399"
                         strokeWidth={1.5}
                         className="shadow"
                       />
                       <text
                         y={3}
-                        fill="#e9d5ff"
+                        fill="#a7f3d0"
                         fontSize="9"
                         fontWeight="bold"
                         textAnchor="middle"
@@ -358,18 +358,18 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                     y1={p1.y}
                     x2={p2.x}
                     y2={p2.y}
-                    stroke={isFullyTraversed ? accentColor : 'rgba(255,255,255,0.07)'}
+                    stroke={isFullyTraversed ? accentColor : 'rgba(255,255,255,0.14)'}
                     strokeWidth={isFullyTraversed ? 8 : 6}
                     strokeLinecap="round"
-                    filter={isFullyTraversed ? 'url(#sleek-cyan-glow)' : undefined}
-                    className={isFullyTraversed ? 'drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : ''}
+                    filter={isFullyTraversed ? 'url(#sleek-emerald-glow)' : undefined}
+                    className={isFullyTraversed ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]' : ''}
                   />
                   {/* Directional Chevron */}
                   <g transform={`translate(${midX}, ${midY}) rotate(${angle})`}>
                     <path
                       d="M -7 -6 L 2 0 L -7 6"
                       fill="none"
-                      stroke={isFullyTraversed ? '#ffffff' : '#f59e0b'}
+                      stroke={isFullyTraversed ? '#ffffff' : '#34d399'}
                       strokeWidth="2.5"
                       strokeLinecap="round"
                       strokeLinejoin="round"
@@ -379,7 +379,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
               );
             }
 
-            // Normal single line: sleek subtle skeleton if unvisited, vibrant cyan if traversed
+            // Normal single line: sleek subtle white skeleton if unvisited, vibrant emerald if traversed
             return (
               <g key={line.id} id={`line-${line.id}`}>
                 {/* Guide Skeleton line */}
@@ -388,11 +388,11 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                   y1={p1.y}
                   x2={p2.x}
                   y2={p2.y}
-                  stroke={isFullyTraversed ? accentColor : 'rgba(255,255,255,0.07)'}
+                  stroke={isFullyTraversed ? accentColor : 'rgba(255,255,255,0.14)'}
                   strokeWidth={isFullyTraversed ? 8 : 6}
                   strokeLinecap="round"
-                  filter={isFullyTraversed ? 'url(#sleek-cyan-glow)' : undefined}
-                  className={isFullyTraversed ? 'drop-shadow-[0_0_8px_rgba(34,211,238,0.8)]' : ''}
+                  filter={isFullyTraversed ? 'url(#sleek-emerald-glow)' : undefined}
+                  className={isFullyTraversed ? 'drop-shadow-[0_0_8px_rgba(16,185,129,0.8)]' : ''}
                 />
               </g>
             );
@@ -414,15 +414,15 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                       y1={p1.y}
                       x2={p2.x}
                       y2={p2.y}
-                      stroke="#fbbf24"
+                      stroke="#34d399"
                       strokeWidth="6"
                       strokeDasharray="6 6"
                       strokeLinecap="round"
                       filter="url(#intense-glow)"
-                      className="opacity-90"
+                      className="opacity-95"
                     />
-                    <circle cx={p1.x} cy={p1.y} r={16} fill="none" stroke="#fbbf24" strokeWidth="2" />
-                    <circle cx={p2.x} cy={p2.y} r={16} fill="none" stroke="#fbbf24" strokeWidth="2" />
+                    <circle cx={p1.x} cy={p1.y} r={16} fill="none" stroke="#ffffff" strokeWidth="2.5" />
+                    <circle cx={p2.x} cy={p2.y} r={16} fill="none" stroke="#ffffff" strokeWidth="2.5" />
                   </>
                 );
               })()}
@@ -444,7 +444,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                     y1={p1.y}
                     x2={p2.x}
                     y2={p2.y}
-                    stroke="#ef4444"
+                    stroke="#f87171"
                     strokeWidth="6"
                     strokeLinecap="round"
                     strokeDasharray="4 4"
@@ -467,7 +467,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
               strokeWidth="4"
               strokeDasharray="6 6"
               strokeLinecap="round"
-              className="opacity-80 transition-all duration-75"
+              className="opacity-90 transition-all duration-75"
             />
           )}
 
@@ -488,26 +488,26 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                 {/* Invisible generous touch target */}
                 <circle r="30" fill="transparent" />
 
-                {/* Active pulsing cyan aura */}
+                {/* Active pulsing emerald aura */}
                 {isActive && (
                   <>
                     <circle
                       r="22"
                       fill="none"
                       stroke={accentColor}
-                      strokeWidth="2"
-                      className="animate-ping opacity-40"
+                      strokeWidth="2.5"
+                      className="animate-ping opacity-50"
                     />
                     <circle
                       r="16"
                       fill={accentColor}
-                      className="opacity-25"
+                      className="opacity-35"
                       filter="url(#intense-glow)"
                     />
                   </>
                 )}
 
-                {/* Outer sleek circle */}
+                {/* Outer sleek circle (Crisp White base, Emerald when visited) */}
                 <circle
                   r={isActive ? 14 : isVisited ? 12 : 11}
                   fill={
@@ -515,27 +515,31 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                       ? accentColor
                       : isVisited
                       ? accentColor
-                      : 'white'
+                      : '#ffffff'
                   }
                   stroke={
                     isActive
                       ? '#ffffff'
                       : isHintTarget
-                      ? '#fbbf24'
+                      ? '#34d399'
                       : isVisited
                       ? '#ffffff'
-                      : 'rgba(255,255,255,0.4)'
+                      : 'rgba(255,255,255,0.8)'
                   }
-                  strokeWidth={isActive ? 3 : 1.5}
+                  strokeWidth={isActive ? 3 : 2}
                   className={`transition-all duration-200 ${
-                    isActive ? 'shadow-lg shadow-cyan-500/60' : isVisited ? 'shadow-md shadow-cyan-500/40' : ''
+                    isActive
+                      ? 'shadow-lg shadow-emerald-500/60'
+                      : isVisited
+                      ? 'shadow-md shadow-emerald-500/40'
+                      : 'shadow-md shadow-black/40'
                   }`}
                 />
 
                 {/* Inner center core pip */}
                 <circle
                   r={isActive ? 6 : isVisited ? 4.5 : 3.5}
-                  fill={isActive ? '#020617' : isVisited ? '#020617' : '#0f172a'}
+                  fill={isActive ? '#02150c' : isVisited ? '#02150c' : '#052216'}
                   className="transition-all duration-200"
                 />
 
@@ -543,7 +547,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                 {dot.label && (
                   <text
                     y="22"
-                    fill="#94a3b8"
+                    fill="#a7f3d0"
                     fontSize="10"
                     fontWeight="700"
                     textAnchor="middle"

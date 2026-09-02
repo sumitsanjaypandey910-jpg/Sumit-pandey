@@ -27,7 +27,7 @@ const defaultProgress: GameProgress = {
   settings: {
     soundEnabled: true,
     hapticsEnabled: true,
-    colorTheme: 'neon-cyan'
+    colorTheme: 'emerald'
   },
   streak: 1
 };
@@ -392,11 +392,12 @@ export default function App() {
   }, [currentDotId, strokeHistory]);
 
   return (
-    <div className="relative min-h-screen w-full bg-slate-950 text-white flex flex-col justify-between overflow-x-hidden font-sans select-none">
-      {/* Sleek Ambient Lighting Effects */}
+    <div className="relative min-h-screen w-full bg-gradient-to-b from-[#03170e] via-[#052216] to-[#02100a] text-white flex flex-col justify-between overflow-x-hidden font-sans select-none">
+      {/* Sleek Green & White Ambient Lighting Effects */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-500/5 rounded-full blur-[120px]" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-purple-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/10 rounded-full blur-[140px]" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-green-400/8 rounded-full blur-[110px]" />
+        <div className="absolute bottom-0 left-0 w-80 h-80 bg-teal-400/8 rounded-full blur-[120px]" />
       </div>
 
       {/* Top Header */}
@@ -438,7 +439,7 @@ export default function App() {
           onStartDotSelect={handleStartDotSelect}
           hintStep={hintStep}
           isComplete={isComplete}
-          accentColor={currentWorld?.accentColor || '#22d3ee'}
+          accentColor={currentWorld?.accentColor || '#10b981'}
         />
       </main>
 
@@ -453,7 +454,7 @@ export default function App() {
         onUseHint={handleUseHint}
         isComplete={isComplete}
         onNextLevel={handleNextLevel}
-        accentColor={currentWorld?.accentColor || '#22d3ee'}
+        accentColor={currentWorld?.accentColor || '#10b981'}
         difficulty={currentLevel.difficulty}
         visitedNodesCount={visitedNodesCount}
         totalNodesCount={currentLevel.dots.length}

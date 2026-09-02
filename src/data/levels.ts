@@ -9,8 +9,8 @@ export const WORLDS_DATA: World[] = [
     name: 'Flora',
     subtitle: 'Floral & Botanical Shapes',
     badge: 'Nature',
-    color: 'from-rose-500 to-pink-600',
-    accentColor: '#f43f5e',
+    color: 'from-emerald-500 to-green-600',
+    accentColor: '#10b981',
     levels: [
       // 1. Spring Blossom (4-petal floral rosette)
       {
@@ -267,8 +267,8 @@ export const WORLDS_DATA: World[] = [
     name: 'Horizon',
     subtitle: 'Nautical & Architecture',
     badge: 'One-Way',
-    color: 'from-amber-500 to-orange-600',
-    accentColor: '#f59e0b',
+    color: 'from-teal-500 to-emerald-600',
+    accentColor: '#34d399',
     levels: [
       // 1. Wind Compass
       {
@@ -498,8 +498,8 @@ export const WORLDS_DATA: World[] = [
     name: 'Fauna',
     subtitle: 'Wildlife & Gemstones',
     badge: '2x Double',
-    color: 'from-purple-500 to-indigo-600',
-    accentColor: '#a855f7',
+    color: 'from-emerald-600 to-green-700',
+    accentColor: '#10b981',
     levels: [
       // 1. Double Mountain Peak
       {

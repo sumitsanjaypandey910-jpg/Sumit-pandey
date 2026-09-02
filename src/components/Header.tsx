@@ -45,22 +45,22 @@ export const Header: React.FC<HeaderProps> = ({
           <button
             id="btn-level-select"
             onClick={onOpenLevelSelect}
-            className="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-400 active:scale-95 transition-all duration-200"
+            className="w-11 h-11 sm:w-12 sm:h-12 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 hover:border-emerald-400/60 text-white hover:text-emerald-300 active:scale-95 transition-all duration-200 shadow-sm"
             title="World & Stage Selector"
           >
-            <Grid className="w-5 h-5 text-cyan-400" />
+            <Grid className="w-5 h-5 text-emerald-400" />
           </button>
 
           <div className="flex flex-col">
             <div className="flex items-center gap-2">
-              <span className="text-[10px] sm:text-xs font-bold tracking-widest text-cyan-400 uppercase">
+              <span className="text-[10px] sm:text-xs font-bold tracking-widest text-emerald-400 uppercase">
                 {world ? world.name : 'World 01'} • STAGE {level.levelNumber < 10 ? `0${level.levelNumber}` : level.levelNumber}
               </span>
-              <span className="text-[9px] px-1.5 py-0.2 rounded-full uppercase tracking-wider font-bold bg-white/5 text-slate-400 border border-white/10">
+              <span className="text-[9px] px-2 py-0.5 rounded-full uppercase tracking-wider font-bold bg-white/10 text-white border border-white/20">
                 {level.difficulty}
               </span>
             </div>
-            <span className="text-xl sm:text-2xl font-black italic tracking-tighter text-white uppercase">
+            <span className="text-xl sm:text-2xl font-black italic tracking-tighter text-white uppercase drop-shadow-sm">
               {level.title}
             </span>
           </div>
@@ -70,7 +70,7 @@ export const Header: React.FC<HeaderProps> = ({
         <div className="flex items-center gap-3 sm:gap-6">
           {/* Level Progress Segmented Capsules */}
           <div className="hidden md:flex flex-col items-end">
-            <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase">
+            <span className="text-[10px] font-bold text-emerald-100/70 tracking-wider uppercase">
               Line Flow ({completedLinesCount}/{totalLinesCount})
             </span>
             <div className="flex gap-1.5 mt-1.5">
@@ -79,8 +79,8 @@ export const Header: React.FC<HeaderProps> = ({
                   key={idx}
                   className={`w-6 h-1.5 rounded-full transition-all duration-300 ${
                     idx < filledSegments
-                      ? 'bg-cyan-400 shadow-[0_0_8px_rgba(34,211,238,0.7)]'
-                      : 'bg-white/10'
+                      ? 'bg-emerald-400 shadow-[0_0_10px_rgba(52,211,153,0.85)]'
+                      : 'bg-white/15'
                   }`}
                 />
               ))}
@@ -88,9 +88,9 @@ export const Header: React.FC<HeaderProps> = ({
           </div>
 
           {/* Quick Score / Stars Badge */}
-          <div className="bg-cyan-500/10 border border-cyan-500/20 px-3.5 py-1.5 rounded-2xl flex items-center gap-2">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span className="font-mono font-bold text-cyan-400 text-xs sm:text-sm">
+          <div className="bg-emerald-500/15 border border-emerald-400/30 px-3.5 py-1.5 rounded-2xl flex items-center gap-2 shadow-inner">
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span className="font-mono font-bold text-emerald-300 text-xs sm:text-sm">
               {totalStars > 0 ? `${totalStars} ★` : '100%'}
             </span>
           </div>
@@ -101,16 +101,16 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="btn-daily-challenge"
               onClick={onOpenDaily}
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:border-amber-500/40 text-amber-300 active:scale-95 transition-all"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 hover:border-emerald-400/50 text-emerald-300 active:scale-95 transition-all shadow-sm"
               title="Daily Brain Challenge"
             >
               {streak > 0 ? (
                 <div className="flex items-center gap-0.5">
-                  <Flame className="w-4 h-4 fill-amber-400 text-amber-400" />
-                  <span className="text-[10px] font-black text-amber-300">{streak}</span>
+                  <Flame className="w-4 h-4 fill-emerald-400 text-emerald-400" />
+                  <span className="text-[10px] font-black text-white">{streak}</span>
                 </div>
               ) : (
-                <Calendar className="w-4 h-4 text-amber-400" />
+                <Calendar className="w-4 h-4 text-emerald-400" />
               )}
             </button>
 
@@ -118,7 +118,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="btn-level-editor"
               onClick={onOpenEditor}
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-500/40 text-slate-400 active:scale-95 transition-all"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 hover:text-emerald-300 hover:border-emerald-400/50 text-white/80 active:scale-95 transition-all shadow-sm"
               title="Level Studio / Builder"
             >
               <Edit3 className="w-4 h-4" />
@@ -128,7 +128,7 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="btn-how-to-play"
               onClick={onOpenHowToPlay}
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-500/40 text-slate-400 active:scale-95 transition-all"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 hover:text-emerald-300 hover:border-emerald-400/50 text-white/80 active:scale-95 transition-all shadow-sm"
               title="How to Play"
             >
               <HelpCircle className="w-4 h-4" />
@@ -138,10 +138,10 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               id="btn-toggle-sound"
               onClick={onToggleSound}
-              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/5 border border-white/10 hover:bg-white/10 hover:text-cyan-400 hover:border-cyan-500/40 text-slate-400 active:scale-95 transition-all"
+              className="w-9 h-9 sm:w-10 sm:h-10 flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white/20 hover:text-emerald-300 hover:border-emerald-400/50 text-white/80 active:scale-95 transition-all shadow-sm"
               title={soundEnabled ? 'Mute Sound' : 'Unmute Sound'}
             >
-              {soundEnabled ? <Volume2 className="w-4 h-4 text-cyan-400" /> : <VolumeX className="w-4 h-4 text-slate-500" />}
+              {soundEnabled ? <Volume2 className="w-4 h-4 text-emerald-400" /> : <VolumeX className="w-4 h-4 text-white/40" />}
             </button>
           </div>
         </div>

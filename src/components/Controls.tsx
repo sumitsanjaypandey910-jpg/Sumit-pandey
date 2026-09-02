@@ -45,12 +45,12 @@ export const Controls: React.FC<ControlsProps> = ({
           disabled={!canUndo || isComplete}
           className={`group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full border transition-all duration-300 active:scale-95 ${
             canUndo && !isComplete
-              ? 'bg-white/5 border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-400 shadow-lg'
-              : 'bg-white/[0.02] border-white/5 text-slate-700 cursor-not-allowed opacity-40'
+              ? 'bg-white/10 border-white/20 hover:border-emerald-400/60 hover:bg-emerald-500/15 text-white hover:text-emerald-300 shadow-lg cursor-pointer'
+              : 'bg-white/[0.03] border-white/5 text-white/25 cursor-not-allowed opacity-40'
           }`}
           title="Undo last stroke"
         >
-          <Undo2 className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-cyan-400 transition-colors" />
+          <Undo2 className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-emerald-300 transition-colors" />
         </button>
 
         {/* Restart / Reset Button */}
@@ -60,12 +60,12 @@ export const Controls: React.FC<ControlsProps> = ({
           disabled={!canReset || isComplete}
           className={`group flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full border transition-all duration-300 active:scale-95 ${
             canReset && !isComplete
-              ? 'bg-white/5 border-white/10 hover:border-cyan-500/50 hover:bg-cyan-500/10 text-slate-300 hover:text-cyan-400 shadow-lg'
-              : 'bg-white/[0.02] border-white/5 text-slate-700 cursor-not-allowed opacity-40'
+              ? 'bg-white/10 border-white/20 hover:border-emerald-400/60 hover:bg-emerald-500/15 text-white hover:text-emerald-300 shadow-lg cursor-pointer'
+              : 'bg-white/[0.03] border-white/5 text-white/25 cursor-not-allowed opacity-40'
           }`}
           title="Reset stage"
         >
-          <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-cyan-400 transition-colors" />
+          <RotateCcw className="w-5 h-5 sm:w-6 sm:h-6 group-hover:text-emerald-300 transition-colors" />
         </button>
 
         {/* Hero Central Action Button (Next Stage on complete or Hint Button during play) */}
@@ -73,7 +73,7 @@ export const Controls: React.FC<ControlsProps> = ({
           <button
             id="btn-quick-next"
             onClick={onNextLevel}
-            className="group flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-cyan-400 text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.55)] hover:scale-105 active:scale-95 transition-all duration-300"
+            className="group flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-emerald-400 text-slate-950 shadow-[0_0_40px_rgba(52,211,153,0.6)] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer"
             title="Next Stage"
           >
             <SkipForward className="w-7 h-7 sm:w-9 sm:h-9 fill-slate-950" />
@@ -83,17 +83,17 @@ export const Controls: React.FC<ControlsProps> = ({
           <button
             id="btn-hint"
             onClick={onUseHint}
-            className={`group relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full transition-all duration-300 active:scale-95 ${
+            className={`group relative flex flex-col items-center justify-center w-20 h-20 sm:w-24 sm:h-24 rounded-full transition-all duration-300 active:scale-95 cursor-pointer ${
               isHintActive
-                ? 'bg-amber-400 text-slate-950 shadow-[0_0_40px_rgba(245,158,11,0.6)] animate-pulse'
+                ? 'bg-emerald-300 text-slate-950 shadow-[0_0_40px_rgba(110,231,183,0.8)] animate-pulse ring-4 ring-white/50'
                 : hintsAvailable > 0
-                ? 'bg-cyan-400 text-slate-950 shadow-[0_0_40px_rgba(34,211,238,0.45)] hover:scale-105'
-                : 'bg-white/10 border border-white/15 text-slate-400 hover:bg-white/15'
+                ? 'bg-emerald-400 text-slate-950 shadow-[0_0_40px_rgba(16,185,129,0.5)] hover:scale-105 hover:bg-emerald-300'
+                : 'bg-white/10 border border-white/20 text-white/50 hover:bg-white/15'
             }`}
             title="Get Hint"
           >
             {/* Hint counter pill */}
-            <span className="absolute -top-1 right-2 px-2 py-0.5 rounded-full bg-slate-950 text-cyan-400 border border-cyan-400/40 font-mono font-black text-[10px] shadow">
+            <span className="absolute -top-1 right-2 px-2 py-0.5 rounded-full bg-[#03170e] text-emerald-300 border border-emerald-400/40 font-mono font-black text-[10px] shadow">
               {hintsAvailable}
             </span>
             <Lightbulb className="w-7 h-7 sm:w-8 sm:h-8 fill-current" />
@@ -103,15 +103,14 @@ export const Controls: React.FC<ControlsProps> = ({
       </div>
 
       {/* Sleek Bottom Telemetry Information */}
-      <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-bold tracking-widest text-slate-500 uppercase px-2">
-        <span>Difficulty: {difficulty}</span>
-        <span className="w-1 h-1 bg-slate-700 rounded-full" />
+      <div className="flex items-center justify-center gap-3 sm:gap-6 text-[10px] sm:text-[11px] font-bold tracking-widest text-emerald-100/60 uppercase px-2">
+        <span>Difficulty: <strong className="text-white font-semibold">{difficulty}</strong></span>
+        <span className="w-1 h-1 bg-emerald-500/40 rounded-full" />
         <span>
-          Nodes: {visitedNodesCount < 10 ? `0${visitedNodesCount}` : visitedNodesCount}/
-          {totalNodesCount < 10 ? `0${totalNodesCount}` : totalNodesCount}
+          Nodes: <strong className="text-white font-semibold">{visitedNodesCount < 10 ? `0${visitedNodesCount}` : visitedNodesCount}/{totalNodesCount < 10 ? `0${totalNodesCount}` : totalNodesCount}</strong>
         </span>
-        <span className="w-1 h-1 bg-slate-700 rounded-full" />
-        <span>Moves: {movesCount < 10 ? `0${movesCount}` : movesCount}</span>
+        <span className="w-1 h-1 bg-emerald-500/40 rounded-full" />
+        <span>Moves: <strong className="text-white font-semibold">{movesCount < 10 ? `0${movesCount}` : movesCount}</strong></span>
       </div>
     </footer>
   );
